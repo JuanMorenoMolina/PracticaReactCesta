@@ -1,14 +1,12 @@
 export default function ListaDeProductos({articulosDisponibles}) {
     const articulosAPintar = articulosDisponibles.map(articulo => (
         <tr key={articulo.codigo}>
-            <td>{articulo.codigo}</td>
+            <td>{articulo.nombre}</td>
             <td>codigo</td>
             <td>Codigo</td>
-            <td>Codigo</td>
+            <td>Boton</td>
         </tr>
     ));
-
-    console.log(articulosAPintar)
 
         return(
             <>
@@ -16,7 +14,6 @@ export default function ListaDeProductos({articulosDisponibles}) {
             <table>
                 <thead>
                     <tr>
-                        <th>Codigo</th>
                         <th>Nombre</th>
                         <th>Precio</th>
                         <th>Unidades</th>
