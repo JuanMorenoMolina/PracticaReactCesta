@@ -10,7 +10,7 @@ export default function CestaProductos({}) {
                     <th>Nombre</th>
                     <th>Precio</th>
                     <th>Unidades</th>
-                    <th>Comprar</th>
+                    <th>Devolver</th>
                 </tr>
             </tbody>
         </table>

@@ -31,14 +31,26 @@ function App() {
     const [filterText,setFilterText]=useState('');
     const [articulosDisponibles,setArticulosDisponibles]=useState(articulosIniciales)
     const [articulosCesta,setArticulosCesta]=useState([]);
-  return (
-    <>
-    <BarraDeBusqueda filterText={filterText} setFilterText={setFilterText}></BarraDeBusqueda>
-    <CestaProductos articulosCesta={articulosCesta} ></CestaProductos>
-    <ListaDeProductos articulosDisponibles={articulosDisponibles} setArticulosDisponibles={setArticulosDisponibles} setArticulosCesta={setArticulosCesta}></ListaDeProductos>
-    </>
-   
-  )
+    return (
+      <>
+        <div className='Barra'>
+          <BarraDeBusqueda filterText={filterText} setFilterText={setFilterText} />
+        </div>
+
+        <div className='Contenedor'>
+          <div>
+            <ListaDeProductos
+              articulosDisponibles={articulosDisponibles}
+              setArticulosDisponibles={setArticulosDisponibles}
+              setArticulosCesta={setArticulosCesta}/>
+          </div>
+
+          <div>
+            <CestaProductos articulosCesta={articulosCesta}/>
+          </div>
+        </div>
+      </>
+  );
 }
 
 export default App

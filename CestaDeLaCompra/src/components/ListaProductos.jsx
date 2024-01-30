@@ -4,7 +4,7 @@ export default function ListaDeProductos({articulosDisponibles}) {
             <td>{articulo.nombre}</td>
             <td>{articulo.precio}</td>
             <td>{articulo.unidades}</td>
-            <td>{articulo.comprar}</td>
+            <button>Comprar</button>
         </tr>
     ));
 
