@@ -2,3 +2,8 @@ Lo primero es definir cuantos componentes voy a necesitar.
 Por ahora el array de productos irá en App.jsx
 Todos los componentes se exportan por default
 En App.jsx se importan todos los componentes y el useState
+
+se definen las variables de filterText que es el usestate vacio.
+los articulosDisponibles que su useState es el array de articulos
+Y la cesta, que como no se has pasado ningun articulo, sera un useState de un array vacio
+
