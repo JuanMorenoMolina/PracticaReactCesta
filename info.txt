@@ -1,0 +1,4 @@
+Lo primero es definir cuantos componentes voy a necesitar.
+Por ahora el array de productos irá en App.jsx
+Todos los componentes se exportan por default
+En App.jsx se importan todos los componentes y el useState
