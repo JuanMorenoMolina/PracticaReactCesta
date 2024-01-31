@@ -7,3 +7,10 @@ se definen las variables de filterText que es el usestate vacio.
 los articulosDisponibles que su useState es el array de articulos
 Y la cesta, que como no se has pasado ningun articulo, sera un useState de un array vacio
 
+En el return se pone la barra de busqueda con los filter.
+
+Despues, en la lista de productos, tienes que poner los articulos disponibles,
+el filtertext de la barra de busqueda, y despues pondras los articulos de la cesta 
+y el Set de los articulos disponibles.
+
+y despues  el componente de la cesta

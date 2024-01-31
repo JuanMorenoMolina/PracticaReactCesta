@@ -28,29 +28,35 @@ function App() {
     { codigo: 20, nombre: "Silla Gaming", precio: 120, unidades: 15 }
   ];
 
-    const [filterText,setFilterText]=useState('');
-    const [articulosDisponibles,setArticulosDisponibles]=useState(articulosIniciales)
-    const [articulosCesta,setArticulosCesta]=useState([]);
-    return (
-      <>
-        <div className='Barra'>
-          <BarraDeBusqueda filterText={filterText} setFilterText={setFilterText} />
+  const [filterText, setFilterText] = useState('');
+  const [articulosDisponibles, setArticulosDisponibles] = useState(articulosIniciales);
+  const [articulosCesta, setArticulosCesta] = useState([]);
+
+  return (
+    <>
+      <div className='Barra'>
+        <BarraDeBusqueda
+          filterText={filterText}
+          setFilterText={setFilterText}
+        />
+      </div>
+
+      <div className='Contenedor'>
+        <div>
+          <ListaDeProductos
+            articulosDisponibles={articulosDisponibles}
+            filterText={filterText}
+            setArticulosDisponibles={setArticulosDisponibles}
+            setArticulosCesta={setArticulosCesta}
+          />
         </div>
 
-        <div className='Contenedor'>
-          <div>
-            <ListaDeProductos
-              articulosDisponibles={articulosDisponibles}
-              setArticulosDisponibles={setArticulosDisponibles}
-              setArticulosCesta={setArticulosCesta}/>
-          </div>
-
-          <div>
-            <CestaProductos articulosCesta={articulosCesta}/>
-          </div>
+        <div>
+          <CestaProductos articulosCesta={articulosCesta} />
         </div>
-      </>
+      </div>
+    </>
   );
 }
 
-export default App
+export default App;
