@@ -1,6 +1,6 @@
 export default function CestaProductos({articulosDisponibles, articulosCesta, setArticulosDisponibles, setArticulosCesta }) {
 
-  const articulosAPintar = articulosCesta.map(articulo => (
+  const articulosAPintar = articulosCesta.map((articulo) => (
     <tr key={articulo.codigo}>
       <td>{articulo.nombre}</td>
       <td>{articulo.precio}</td>

@@ -1,4 +1,4 @@
-export default function ListaDeProductos({articulosDisponibles, filterText, setArticulosDisponibles, setArticulosCesta}) {
+export default function ListaDeProductos({articulosDisponibles, filterText, setArticulosDisponibles, setArticulosCesta, articulosCesta}) {
 
     const filtradoDeArticulos = articulosDisponibles.filter(articulo =>
         articulo.nombre.toLowerCase().includes(filterText.toLowerCase())
@@ -15,32 +15,38 @@ export default function ListaDeProductos({articulosDisponibles, filterText, setA
         </tr>
     ));
 
-    const comprar = (articulo) => {
-
-         
-        
-        if (articulo.unidades > 0) {
-    
+    const comprar = (articuloAComprar) => {
+        if (articuloAComprar.unidades > 0) {
             const articulosParaComprar = articulosDisponibles.map(articulo =>
-                articulo.codigo === articulo.codigo
-                    ? { ...articulo, unidades: articulo.unidades - 1 }: articulo
+                articulo.codigo === articuloAComprar.codigo
+                    ? { ...articulo, unidades: articulo.unidades - 1 }
+                    : articulo
             );
-
-            const articuloParaLaCesta = articulosDisponibles.map(articulo =>
-                articulo.codigo === articulo.codigo
-                ? {...articulo, cantidad: articulo.cantidad + 1}: articulo
-                
-            );
-            console.log(articuloParaLaCesta)
+    
+            const articuloParaLaCesta = articulosParaComprar.find(articulo => articulo.codigo === articuloAComprar.codigo);
+    
             setArticulosDisponibles(articulosParaComprar);
-            setArticulosCesta((Cesta) => [...Cesta,articulo]);
+    
+            setArticulosCesta((Cesta) => {
+                const articuloEnCesta = Cesta.find(articulo => articulo.codigo === articuloParaLaCesta.codigo);
+    
+                if (articuloEnCesta) {
+              
+                    return Cesta.map(articulo =>
+                        articulo.codigo === articuloParaLaCesta.codigo
+                            ? { ...articulo, unidades: articulo.unidades + 1 }
+                            : articulo
+                    );
+                } else {
 
-        }
-        else {
+                    return [...Cesta, articuloParaLaCesta];
+                }
+            });
+        } else {
+            
             alert("No hay unidades disponibles");
         }
     };
-   
     return (
         <>
             <h3>Articulos disponibles</h3>
