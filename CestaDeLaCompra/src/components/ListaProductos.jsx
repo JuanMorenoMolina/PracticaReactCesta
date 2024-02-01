@@ -16,6 +16,8 @@ export default function ListaDeProductos({articulosDisponibles, filterText, setA
     ));
 
     const comprar = (articulo) => {
+
+         
         
         if (articulo.unidades > 0) {
     
@@ -24,8 +26,14 @@ export default function ListaDeProductos({articulosDisponibles, filterText, setA
                     ? { ...articulo, unidades: articulo.unidades - 1 }: articulo
             );
 
+            const articuloParaLaCesta = articulosDisponibles.map(articulo =>
+                articulo.codigo === articulo.codigo
+                ? {...articulo, cantidad: articulo.cantidad + 1}: articulo
+                
+            );
+            console.log(articuloParaLaCesta)
             setArticulosDisponibles(articulosParaComprar);
-            setArticulosCesta((Cesta) => [...Cesta, articulo]);
+            setArticulosCesta((Cesta) => [...Cesta,articulo]);
 
         }
         else {

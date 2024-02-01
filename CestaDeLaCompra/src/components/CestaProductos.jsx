@@ -4,7 +4,7 @@ export default function CestaProductos({articulosDisponibles, articulosCesta, se
     <tr key={articulo.codigo}>
       <td>{articulo.nombre}</td>
       <td>{articulo.precio}</td>
-      <td>{articulo.unidades}</td>
+      <td>{articulo.cantidad}</td>
       <td>
         <button onClick={() => devolver(articulo)}>Devolver</button>
       </td>
