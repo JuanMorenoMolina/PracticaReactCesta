@@ -19,15 +19,13 @@ export default function ListaDeProductos({articulosDisponibles, filterText, setA
         
         if (articulo.unidades > 0) {
     
-            const codigoArticulo = articulo.codigo;
             const articulosParaComprar = articulosDisponibles.map(articulo =>
-                articulo.codigo === codigoArticulo
-                    ? { ...articulo, unidades: articulo.unidades - 1 }
-                    : articulo
+                articulo.codigo === articulo.codigo
+                    ? { ...articulo, unidades: articulo.unidades - 1 }: articulo
             );
 
             setArticulosDisponibles(articulosParaComprar);
-            setArticulosCesta((prevCesta) => [...prevCesta, articulo]);
+            setArticulosCesta((Cesta) => [...Cesta, articulo]);
 
         }
         else {
