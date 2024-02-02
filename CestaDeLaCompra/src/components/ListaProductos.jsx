@@ -1,4 +1,4 @@
-export default function ListaDeProductos({articulosDisponibles, filterText, setArticulosDisponibles, setArticulosCesta, articulosCesta}) {
+export default function ListaDeProductos({articulosDisponibles, filterText, setArticulosDisponibles, setArticulosCesta}) {
 
     const filtradoDeArticulos = articulosDisponibles.filter(articulo =>
         articulo.nombre.toLowerCase().includes(filterText.toLowerCase())
@@ -34,12 +34,12 @@ export default function ListaDeProductos({articulosDisponibles, filterText, setA
               
                     return Cesta.map(articulo =>
                         articulo.codigo === articuloParaLaCesta.codigo
-                            ? { ...articulo, unidades: articulo.unidades + 1 }
+                            ? { ...articulo, cantidad: articulo.cantidad + 1 }
                             : articulo
                     );
                 } else {
 
-                    return [...Cesta, articuloParaLaCesta];
+                    return [...Cesta, {...articuloParaLaCesta,cantidad:1}];
                 }
             });
         } else {
