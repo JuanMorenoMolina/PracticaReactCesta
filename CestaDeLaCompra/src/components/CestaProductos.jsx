@@ -1,4 +1,4 @@
-export default function CestaProductos({articulosDisponibles,setArticulosDisponibles, setArticulosCesta, articulosCesta}) {
+export default function CestaProductos({articulosDisponibles, articulosCesta, setArticulosDisponibles, setArticulosCesta }) {
 
   const articulosAPintar = articulosCesta.map((articulo) => (
     <tr key={articulo.codigo}>
@@ -12,18 +12,28 @@ export default function CestaProductos({articulosDisponibles,setArticulosDisponi
   ));
 
   const devolver = (articuloADevolver) => {
-    const articulosParaDevolver = articulosCesta.map(articulo =>{
-      if (articuloADevolver.cantidad > 0) 
-      return {
-        ...p,
-        cantidad: p.cantidad -1
+    const articulosParaDevolver = articulosCesta.map(articulo => {
+      if (articulo.codigo === articuloADevolver.codigo && articuloADevolver.cantidad > 0) {
+        return {
+          ...articulo,
+          cantidad: articulo.cantidad - 1
+        };
       }
-          articulo.codigo === articuloADevolver.cantidad
-              ? { ...articulo, cantidad: articulo.cantidad - 1 }
-              : articulo
+      return articulo;
+    }).filter(articulo => articulo.cantidad > 0);
   
-    }
-  }
+    setArticulosCesta(articulosParaDevolver);
+  
+    setArticulosDisponibles(productosDisponibles.map(articulo => {
+      if (articulo.codigo === articuloADevolver.codigo) {
+        return {
+          ...articulo,
+          cantidad: articulo.cantidad + 1
+        };
+      }
+      return articulo;
+    }));
+  };
 
   return (
     <>
