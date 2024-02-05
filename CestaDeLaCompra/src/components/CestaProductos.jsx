@@ -23,33 +23,7 @@ export default function CestaProductos({articulosDisponibles,setArticulosDisponi
               : articulo
   
     }
-    
-
-      const articulosParaLista = articulosParaDevolver.find(articulo => articulo.cantidad === articuloADevolver.cantidad)
-
-      setArticulosCesta(articulosParaDevolver);
-
-      setArticulosDisponibles((Lista) => {
-        const articuloEnLista = Lista.find(articulo => articulo.codigo === articulosParaLista.codigo);
-
-        if (articuloEnLista) {
-      
-            return Lista.map(articulo =>
-                articulo.codigo === articulosParaLista.codigo
-                    ? { ...articulo, cantidad: articulo.cantidad + 1 }
-                    : articulo
-            );
-        } else {
-
-            return [...Lista, {...articulosParaLista,cantidad:1}];
-        }
-    });
-
-    } else {
-
-      return [...Lista, {...articuloADevolver,cantidad:1}];
-    }
-}
+  }
 
   return (
     <>
