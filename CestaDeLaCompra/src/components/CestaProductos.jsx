@@ -12,12 +12,18 @@ export default function CestaProductos({articulosDisponibles,setArticulosDisponi
   ));
 
   const devolver = (articuloADevolver) => {
-    if (articuloADevolver.cantidad > 0) {
-      const articulosParaDevolver = articulosCesta.map(articulo =>
+    const articulosParaDevolver = articulosCesta.map(articulo =>{
+      if (articuloADevolver.cantidad > 0) 
+      return {
+        ...p,
+        cantidad: p.cantidad -1
+      }
           articulo.codigo === articuloADevolver.cantidad
               ? { ...articulo, cantidad: articulo.cantidad - 1 }
               : articulo
-      );
+  
+    }
+    
 
       const articulosParaLista = articulosParaDevolver.find(articulo => articulo.cantidad === articuloADevolver.cantidad)
 
