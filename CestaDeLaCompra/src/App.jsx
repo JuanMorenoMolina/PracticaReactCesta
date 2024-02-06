@@ -2,36 +2,18 @@ import { useEffect, useState } from 'react'
 import BarraDeBusqueda from './components/BarraDeBusqueda';
 import ListaDeProductos from './components/ListaProductos';
 import CestaProductos from './components/CestaProductos';
+import fetchProductos from './peticiones/fetchProductos';
+import fetchComprar from './peticiones/fetchComprar'
 
 function App() {
-
-
-  const URL_SERVER="http://54.156.239.73:3000/"
 
   const [filterText, setFilterText] = useState('');
   const [articulosDisponibles, setArticulosDisponibles] = useState([]);
   const [articulosCesta, setArticulosCesta] = useState([]);
 
   useEffect(()=> {
-    fetchProductos(filterText);
+    fetchProductos(filterText, setArticulosDisponibles);
   }, [filterText]);
-
-  const fetchProductos = (textoFiltrado) =>{
-
-    fetch(URL_SERVER + "articulosIniciales?nombre_like=" + textoFiltrado)
-    .then(response =>{
-      if(response.ok){
-        return response.json();
-      }else{
-        throw new Error(response.status)
-      }
-    })
-    .then((articulos) =>{
-      setArticulosDisponibles(articulos);
-    })
-  }
-
-
 
   return (
     <>
