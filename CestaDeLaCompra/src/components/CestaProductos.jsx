@@ -24,11 +24,11 @@ export default function CestaProductos({articulosDisponibles, articulosCesta, se
   
     setArticulosCesta(articulosParaDevolver);
   
-    setArticulosDisponibles(productosDisponibles.map(articulo => {
+    setArticulosDisponibles(articulosDisponibles.map(articulo => {
       if (articulo.codigo === articuloADevolver.codigo) {
         return {
           ...articulo,
-          cantidad: articulo.cantidad + 1
+          unidades: articulo.unidades + 1
         };
       }
       return articulo;

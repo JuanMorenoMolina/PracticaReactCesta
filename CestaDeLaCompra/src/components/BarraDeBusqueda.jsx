@@ -1,9 +1,15 @@
-export default function SearchBar({ filterText,setFilterText}) {
+export default function SearchBar({ filterText, fetchProductosFiltrados, onFilterTextChange}) {
+
+  const manejarFiltro = (e =>{
+    const introducido = e.target.value;
+    fetchProductosFiltrados(introducido);
+    onFilterTextChange(introducido);
+  })
   return (
       <input 
         type="text" 
         value={filterText} 
-        onChange={(e)=>setFilterText(e.target.value)}
+        onChange={manejarFiltro}
         placeholder="Buscar..."/>
 
   );
